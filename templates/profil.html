@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Profil{% endblock %}
+
+{% block content %}
+
+<script>
+    function callLogoutFunction(){
+        fetch("/CallLogout")
+    }
+</script>
+<h1>Profil</h1>
+<p>{{brukernavn}}, {{passord}}, {{email}}</p>
+
+<button type="logout" onclick="callLogoutFunction()">Log out</button>
+
+
+{% endblock %}

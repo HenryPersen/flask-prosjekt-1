@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Registrering{% endblock %}
+
+{% block content %}
+
+<h1>Registrering</h1>
+<form method="POST">
+    <label>Brukernavn</label><br>
+    <input type="text" name="brukernavn" id="brukernavn"><br>
+    <label>Passord</label><br>
+    <input type="password" name="passord" id="passord"><br>
+    <label>E-Mail</label><br>
+    <input type="email" name="email" id="email"><br>
+    <br>
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}
