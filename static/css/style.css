@@ -2,7 +2,10 @@
     font-family: ValveOccult;
     src: url("../fonts/ValveOccult-SemiBold.woff2");
 }
-
+h1{
+    display:flex;
+    justify-content: center;
+}
 body{
     font-family: ValveOccult;
     background-color: rgb(54, 39, 22);
@@ -30,4 +33,27 @@ main{
 }
 a{
     color: rgb(243, 162, 40)
+}
+#spillboks{
+    display:flex;
+    justify-content: space-evenly;
+    position:relative;
+    flex-wrap:wrap;
+}
+#spilldiv{
+    background-color: rgb(139, 102, 61);
+    display:flex;
+    position:relative;
+    width: 40%;
+    height: 50vh;
+    border-radius: 3vw;
+    padding: 2vw;
+    font-size: clamp(10px, 1.3vw, 40px);
+    flex-direction: column;
+    margin-bottom: 3vh;
+    
+}
+#datotekst{
+    position:absolute;
+    bottom:0;
 }

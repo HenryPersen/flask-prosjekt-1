@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import datetime
 
 app = Flask(__name__)
 
@@ -7,16 +8,27 @@ class bruker:
         self.brukernavn = brukernavn
         self.passord = passord
         self.email = email
+        self.spill = []
 
+class spill:
+    def __init__(self, navn, rating, bruker, tekst, dato):
+        self.navn = navn
+        self.rating = rating
+        self.bruker = bruker
+        self.tekst = tekst
+        self.dato = dato
 
 currentuser = None
 brukere = [
 
 ]
+spilllogg = [
+
+]
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", spill=spilllogg)
 
 
 @app.route("/CallLogout", methods=["GET", "POST"])
@@ -31,9 +43,21 @@ def logout():
     
     currentuser = None
 
-@app.route("/spillregistrering")
+@app.route("/spillregistrering", methods=["GET", "POST"])
 def spillregistrering():
-    return render_template("spillregistrering.html")
+    if request.method == "POST":
+        nyttspill = spill(
+            request.form["spillnavn"],
+            request.form["rating"],
+            currentuser,
+            request.form["kommentar"],
+            datetime.datetime.now()
+        )
+        spilllogg.append(nyttspill)
+        currentuser.spill.append(nyttspill)
+
+    return render_template("spillregistrering.html",
+                           user=currentuser)
 
 
 @app.route("/profil", methods=["GET", "POST"])

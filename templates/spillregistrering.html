@@ -5,5 +5,19 @@
 {% block content %}
 
 <h1>Registrer Spill</h1>
+{% if user != None %}
+<form method="POST">
+    <label>Navn på Spillet</label><br>
+    <input type="text" name="spillnavn" id="spillnavn" required><br>
+    <label>Rating</label><br>
+    <input type="number" name="rating" id="rating" min="1" max="5" required><br>
+    <label>Kommentar</label><br>
+    <input type="text" name="kommentar" id="kommentar"><br>
+    <br>
+    <button type="submit">Submit</button>
+</form>
+{% else %}
+    <h1>Du må registrere en bruker først for å registrere et spill</h1>
+{% endif %}
 
 {% endblock %}

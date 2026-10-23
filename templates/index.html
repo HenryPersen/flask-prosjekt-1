@@ -5,5 +5,15 @@
 {% block content %}
 
 <h1>Forside</h1>
+<div id="spillboks">
+{% for i in spill %}
+    <div id="spilldiv">
+        <h2>{{ i.navn }}, skrevet av {{i.bruker.brukernavn}}</h2><br>
+        <p>{{i.rating}}/5</p>
+        <p>{{i.tekst}}</p>
+        <p id="datotekst">Lagt ut {{i.dato.strftime("%B")}} {{i.dato.strftime("%d")}} kl {{i.dato.strftime("%H")}}:{{i.dato.strftime("%M")}}</p>
+    </div>
+{% endfor %}
+</div>
 
 {% endblock %}
